@@ -1,0 +1,24 @@
+<%= 'User ' + params[:username] + ' not found' if !@user and request.method.eql?("POST")%>
+
+<% if @user %>
+    <H1> User <%= @user.username %> </H1>
+    <% @user.searches.each do |search| %>
+        <h2><span onclick="$('#res_<%=search.id%>').toggle();" style="cursor:pointer">+</span><%= search.query + " " + search.search_results.count.to_s + " results"%></h2>
+        <div id="res_<%=search.id%>" style="display:none">
+          <% search.search_results.each do |res| %>
+              <%= res.data %></br>
+          <% end %>
+        </div>
+    <% end %>
+<% else %>
+    <%= form_tag do %>
+        <div class="field">
+          <label>Username</label><br />
+          <%= text_field_tag :username %>
+        </div>
+
+        <div class="actions">
+          <%= submit_tag value = 'Show queries' %>
+        </div>
+    <% end %>
+<% end %>

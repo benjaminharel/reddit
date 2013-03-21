@@ -1,0 +1,10 @@
+== Welcome to Reddit search application
+
+
+ Get the project
+ Run rake db:migrate
+ If You want to use MySQL just edit the database.yml file and run rake db:migrate again
+
+ Run rails s and point your browser to http://localhost:3000
+
+ Enjoy!

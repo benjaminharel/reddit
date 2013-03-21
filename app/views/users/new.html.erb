@@ -1,0 +1,21 @@
+<%= form_tag do %>
+    <div class="field">
+      <label>Username</label><br />
+      <%= text_field_tag :username, @user.username %>
+    </div>
+
+    <div class="field">
+      <label>Query</label><br />
+      <%= text_field_tag :query, @query %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag value = 'Search reddit' %>
+    </div>
+<% end %>
+
+<% if @links %>
+<% @links.each do |link| %>
+    <%= link_to link[:title], link[:url] %></br>
+<% end %>
+<% end %>
